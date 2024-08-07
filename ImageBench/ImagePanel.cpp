@@ -272,6 +272,7 @@ void ImagePanel::leftUp(wxMouseEvent& evt) {
 void ImagePanel::rightDown(wxMouseEvent& evt) {
 	wxPoint pixelLoc = evt.GetPosition();
 	std::cout << pixelLoc.x << "\n" << pixelLoc.y << "\n";
+	evt.Skip();
 }
 
 //void ImagePanel::drawAtMouse(wxMouseEvent& evt) {
