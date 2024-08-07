@@ -27,7 +27,7 @@ void ImagePanel::loadBitmap(wxString path) {
 	Refresh();
 	Update();
 	int w, h, channels;
-	uint8_t* data = loadImageDataRGBA(path, &w, &h, &channels);
+	uint8_t* data = loadImageDataRGBA(path.mb_str(), &w, &h, &channels);
 	wxBitmap bmp = RGBAtoBitmap(data, w, h);
 	if (bmp.IsOk()) {
 		renderedBitmap = bmp;

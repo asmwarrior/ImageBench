@@ -1,5 +1,6 @@
 #pragma once
 #include <wx/wx.h>
+#include <stdint.h>
 
 class ImagePanel : public wxPanel
 {

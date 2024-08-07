@@ -1,6 +1,7 @@
 #pragma once
 #include <wx/wx.h>
 #include <wx/rawbmp.h>
+#include <stdint.h>
 
 class ImageProcessor {
 
