@@ -15,7 +15,7 @@ EVT_LEFT_UP(ImagePanel::leftUp)
 wxEND_EVENT_TABLE()
 
 ImagePanel::ImagePanel(wxWindow* parent) :
-	wxPanel(parent), isPanning(false), isLoading(false), aspRatio(0), imageOffsetX(0), imageOffsetY(0), 
+	wxPanel(parent), isPanning(false), isLoading(false), aspRatio(0), imageOffsetX(0), imageOffsetY(0),
 	canvw(0), canvh(0), scale(1), imagePosX(0), imagePosY(0), imgh(0), imgw(0), mouseX(0), mouseY(0), panAmountX(0), panAmountY(0)
 {
 	loadingScreen.LoadFile("loadingScreen.png");
@@ -38,7 +38,7 @@ void ImagePanel::loadBitmap(wxString path) {
 	}
 }
 
-//Load image using its path. 
+//Load image using its path.
 void ImagePanel::loadImage(wxString path) {
 	isLoading = true;
 	Refresh();
@@ -55,7 +55,7 @@ void ImagePanel::loadImage(wxString path) {
 }
 
 
-//Load RGB/RGBA image using raw data. Converts to bitmap before render.  
+//Load RGB/RGBA image using raw data. Converts to bitmap before render.
 void ImagePanel::loadImage(uint8_t* imageData, int x, int y, int channels) {
 	isLoading = true;
 	Refresh();
@@ -71,7 +71,7 @@ void ImagePanel::loadImage(uint8_t* imageData, int x, int y, int channels) {
 	}
 }
 
-//Load RGB image using raw data. Converts to wxImage then to bitmap. 
+//Load RGB image using raw data. Converts to wxImage then to bitmap.
 void ImagePanel::loadImage(uint8_t* imageData, int x, int y){
 	isLoading = true;
 	Refresh();
@@ -86,7 +86,7 @@ void ImagePanel::loadImage(uint8_t* imageData, int x, int y){
 	}
 }
 
-//Load RGBA image using raw data. Converts to wxImage then to bitmap. 
+//Load RGBA image using raw data. Converts to wxImage then to bitmap.
 void ImagePanel::loadImage(uint8_t* imageData, uint8_t* imageAlpha, int x, int y){
 	isLoading = true;
 	Refresh();
@@ -101,7 +101,7 @@ void ImagePanel::loadImage(uint8_t* imageData, uint8_t* imageAlpha, int x, int y
 	}
 }
 
-//Loads RGBA raw Data using STBI. 
+//Loads RGBA raw Data using STBI.
 uint8_t* ImagePanel::loadImageDataRGBA(const char* path, int* w, int* h, int* channels) {
 	int channelsRequired = 4;
 	uint8_t* imgData = stbi_load(path, w, h, channels, channelsRequired);
@@ -111,7 +111,7 @@ uint8_t* ImagePanel::loadImageDataRGBA(const char* path, int* w, int* h, int* ch
 	return NULL;
 }
 
-//Converts raw RGB/RGBA data to a bitmap. 
+//Converts raw RGB/RGBA data to a bitmap.
 wxBitmap ImagePanel::RGBAtoBitmap(uint8_t* rgba, int w, int h)
 {
 	wxBitmap bitmap = wxBitmap(w, h, 32);
@@ -193,11 +193,11 @@ void ImagePanel::scaleToRatio(int contw, int conth) {
 	}
 }
 
-//Does not render, but prepares to render. 
+//Does not render, but prepares to render.
 void ImagePanel::paintEvent(wxPaintEvent& evt) {
 	wxPaintDC dc(this);
 	dc.GetSize(&canvw, &canvh);
-	//Calculates the images offset based on scale, centers it. 
+	//Calculates the images offset based on scale, centers it.
 	imagePosX = (canvw / scale - imgw) / 2 + (panAmountX + imageOffsetX) / scale;
 	imagePosY = (canvh / scale - imgh) / 2 + (panAmountY + imageOffsetY) / scale;
 
@@ -210,13 +210,13 @@ void ImagePanel::paintEvent(wxPaintEvent& evt) {
 		isLoading = false;
 	}
 }
- 
+
 void ImagePanel::paintNow() {
 	wxClientDC dc(this);
 	render(dc);
 }
 
-//The render function which does the actual rendering to the screen. 
+//The render function which does the actual rendering to the screen.
 void ImagePanel::render(wxDC& dc) {
 	dc.SetUserScale(scale, scale);
 	dc.DrawBitmap(renderedBitmap, imagePosX, imagePosY, false);
@@ -253,7 +253,7 @@ void ImagePanel::panHandler(wxMouseEvent& evt) {
 }
 
 void ImagePanel::leftDown(wxMouseEvent& evt) {
-	isPanning = true; 
+	isPanning = true;
 	mouseX = evt.GetX();
 	mouseY = evt.GetY();
 }
