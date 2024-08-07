@@ -53,7 +53,7 @@ MainW::MainW() : wxFrame(nullptr, wxID_ANY, "Green Screen Remover", wxPoint(0,0)
 	r_prevCheckBox = new wxCheckBox(rightPanel, 1004, wxString("Real Time Preview"));
 	r_prevCheckBox->SetForegroundColour(wxColor("white"));
 	r_prevCheckBox->SetFont(r_prevCheckBox->GetFont().MakeLarger().MakeBold());
-	
+
 	r_vBox = new wxBoxSizer(wxVERTICAL);
 	r_vBox->Add(r_lstbox, 0, wxALIGN_CENTER | wxALL | wxEXPAND | wxSHAPED, 20);
 	r_vBox->Add(r_prevCheckBox, 0, wxALIGN_LEFT | wxALL | wxEXPAND, 20);
@@ -90,7 +90,7 @@ void MainW::LoadImageButton(wxCommandEvent &evt)
 		Refresh();
 		Update();
 		r_lstbox->AppendString(imagePath);
-		wxLogNull logNo; 
+		wxLogNull logNo;
 		//imgProc.loadImageDataRGBA(imagePath);
 		//cout << pixelTest.r << " " << pixelTest.b << " " << pixelTest.g << "\n";
 		//cout << imgProc.getPixel(1, 1);
@@ -104,7 +104,7 @@ void MainW::LoadImageButton(wxCommandEvent &evt)
 		imagePanel->loadBitmap(imagePath);
 		imgProc.loadImageDataBMP(imagePanel->renderedBitmap);
 		std::cout << imgProc.getPixel(0, 0);
-		evt.Skip(); 
+		evt.Skip();
 	}
 }
 
@@ -131,7 +131,7 @@ void MainW::GrayScaleImage(wxCommandEvent& evt) {
 void MainW::ChangeBrightness(wxScrollEvent& evt) {
 
 	imgProc.BrightnessControl(evt.GetPosition() / 5);
-	
+
 	/*brightnessPopup->SetSize(wxSize(500, 500));
 	brightnessPopup->CentreOnParent();*/
 	imagePanel->Refresh();
