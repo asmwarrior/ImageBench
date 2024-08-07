@@ -256,6 +256,7 @@ void ImagePanel::leftDown(wxMouseEvent& evt) {
 	isPanning = true;
 	mouseX = evt.GetX();
 	mouseY = evt.GetY();
+	evt.Skip();
 }
 
 void ImagePanel::leftUp(wxMouseEvent& evt) {
@@ -265,6 +266,7 @@ void ImagePanel::leftUp(wxMouseEvent& evt) {
 	panAmountX = 0;
 	panAmountY = 0;
 	Refresh();
+	evt.Skip();
 }
 
 void ImagePanel::rightDown(wxMouseEvent& evt) {
