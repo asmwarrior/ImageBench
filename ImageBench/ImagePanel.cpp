@@ -121,7 +121,7 @@ wxBitmap ImagePanel::RGBAtoBitmap(uint8_t* rgba, int w, int h)
 	}
 
 	wxAlphaPixelData bmdata(bitmap);
-	if (bmdata == NULL) {
+	if (!bmdata) {
 		wxLogDebug(wxT("getBitmap() failed"));
 		//delete bitmap;
 		return wxNullBitmap;
