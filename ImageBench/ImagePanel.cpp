@@ -117,14 +117,14 @@ wxBitmap ImagePanel::RGBAtoBitmap(uint8_t* rgba, int w, int h)
 	wxBitmap bitmap = wxBitmap(w, h, 32);
 	if (!bitmap.Ok()) {
 		//delete bitmap;
-		return NULL;
+		return wxNullBitmap;
 	}
 
 	wxAlphaPixelData bmdata(bitmap);
 	if (bmdata == NULL) {
 		wxLogDebug(wxT("getBitmap() failed"));
 		//delete bitmap;
-		return NULL;
+		return wxNullBitmap;
 	}
 
 	wxAlphaPixelData::Iterator dst(bmdata);
